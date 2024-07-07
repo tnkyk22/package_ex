@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:package_ex/screen/about_us_screen.dart';
+import 'package:package_ex/screen/cal_screen.dart';
 import 'package:package_ex/screen/contact_us_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         child: Swiper(
-          autoplay: true,
+          //autoplay: true,
           itemCount: sliders.length,
           itemBuilder: (context, index) => Image.asset(
             sliders[index],
@@ -77,6 +78,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
+        onTap: (value) {
+          print(value);
+          switch (value) {
+            case 1:
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const CalculationScreen(),
+                ),
+              );
+              break;
+            default:
+              break;
+          }
+        },
         items: [
           const BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -84,8 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.deepPurple,
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.calculate),
+            label: 'Calculation',
             backgroundColor: Colors.deepPurple,
           ),
           const BottomNavigationBarItem(
